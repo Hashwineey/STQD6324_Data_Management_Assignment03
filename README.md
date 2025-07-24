@@ -4,7 +4,7 @@ This project demonstrates big data processing using Apache Spark and Cassandra. 
 
 ---
 
-## 📁 Dataset Files
+## Dataset Files
 
 - `u.user`: User demographic information
 - `u.item`: Movie metadata
@@ -12,7 +12,7 @@ This project demonstrates big data processing using Apache Spark and Cassandra. 
 
 ---
 
-## ⚙️ Technologies Used
+## Technologies Used
 
 - **Apache Spark 2** (PySpark)
 - **Cassandra 3**
@@ -22,7 +22,7 @@ This project demonstrates big data processing using Apache Spark and Cassandra. 
 
 ---
 
-## 🔄 Project Workflow
+## Project Workflow
 
 1. **Data Loading & Parsing**
    - Read and parse `u.user`, `u.item`, and `u.data` files into Spark RDDs/DataFrames
@@ -45,21 +45,21 @@ This project demonstrates big data processing using Apache Spark and Cassandra. 
 
 ---
 
-## 📈 Sample Output
+## Sample Output
 
 > Example queries and results will be displayed here after execution.
 
 ---
 
-## 💡 Insights & Challenges
+## Insights & Challenges
 
 - Learned how to handle multi-source file integration using Spark.
 - Understood Cassandra’s columnar storage and its integration with Spark.
-- Faced DNS issues in Docker (👀) and migrated setup to university machine.
+- Faced DNS issues in Docker and migrated setup to university machine.
 
 ---
 
-## 📎 References
+## References
 
 - [MovieLens Dataset](https://grouplens.org/datasets/movielens/)
 - [Apache Spark Docs](https://spark.apache.org/docs/latest/)
@@ -67,7 +67,7 @@ This project demonstrates big data processing using Apache Spark and Cassandra. 
 
 ---
 
-## ✨ Author
+## Author
 
 - Hashwineey Tamilselvan | MSc Data Science
 
