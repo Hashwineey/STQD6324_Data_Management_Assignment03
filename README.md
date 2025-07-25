@@ -1,75 +1,69 @@
-# MovieLens 100K Dataset Analysis using Apache Spark & Cassandra
+# 🎬 MovieLens Analytics with Spark Cassandra in Zeppelin Notebook
 
-This project demonstrates big data processing using Apache Spark and Cassandra. It covers data ingestion, transformation, storage, and analysis of the [MovieLens 100K dataset](https://grouplens.org/datasets/movielens/100k/), a commonly used benchmark in recommendation systems and data mining research.
-
----
-
-## Dataset Files
-
-- `u.user`: User demographic information
-- `u.item`: Movie metadata
-- `u.data`: User ratings of movies
+This project explores the MovieLens 100k dataset using Apache Spark and Cassandra in Zeppelin Notebook. The objective was to process real-world structured data, store it in a distributed NoSQL database, and perform analytical queries using Spark SQL, all within a Big Data ecosystem.
 
 ---
 
-## Technologies Used
-
-- **Apache Spark 2** (PySpark)
-- **Cassandra 3**
-- **Python 3**
-- **Jupyter Notebook / Zeppelin**
-- **Docker / VirtualBox (initial setup, replaced with on-prem Spark)**
-
----
-
-## Project Workflow
-
-1. **Data Loading & Parsing**
-   - Read and parse `u.user`, `u.item`, and `u.data` files into Spark RDDs/DataFrames
-2. **Schema Transformation**
-   - Clean and transform raw data
-3. **Cassandra Integration**
-   - Write and read Spark DataFrames to/from Cassandra
-4. **Query Execution**
-   - Perform analytical queries using Spark SQL and Cassandra CQL
+## 🧰 Tools & Technologies
+- **Apache Spark 2 (PySpark)**
+- **Cassandra NoSQL Database**
+- **Zeppelin Notebook**
+- **HDFS (Hadoop Distributed File System)**
+- **HDP Sandbox (via VirtualBox)**
 
 ---
 
-## ❓ Analysis Questions
+## 📂 Dataset Overview
 
-1. How many users rated movies released in 1995?
-2. What is the most-watched genre by female users?
-3. What is the average rating of 'Toy Story (1995)' across all users?
-4. Which age group gives the highest average movie rating?
-5. How many movies have never been rated?
+The project uses the **MovieLens 100k** dataset which contains:
+- `u.user` — 943 user profiles (age, gender, occupation, zip)
+- `u.item` — 1,682 movie details (title, genre flags)
+- `u.data` — 100,000 movie ratings (user, movie, rating, timestamp)
 
----
-
-## Sample Output
-
-> Example queries and results will be displayed here after execution.
+These files were:
+- Downloaded and stored in **HDFS**
+- Parsed with predefined **Spark schemas**
+- Stored into **Cassandra tables** for persistence
 
 ---
 
-## Insights & Challenges
+## 📊 Results Summary
 
-- Learned how to handle multi-source file integration using Spark.
-- Understood Cassandra’s columnar storage and its integration with Spark.
-- Faced DNS issues in Docker and migrated setup to university machine.
+### Q1: Average Rating for Each Movie (Top 10)
+We calculated the average rating for each movie by joining ratings_df_clean with titles_df using Spark SQL. The result was sorted by highest average rating and top 10 were displayed. This helped identify the most critically appreciated movies based on viewer ratings.
+
+### Q2: Top 10 Movies with Highest Average Ratings (≥ 50 ratings)
+To ensure fairness, only movies with at least 50 user ratings were considered. We grouped by movie title, filtered using HAVING COUNT(*) >= 50, and then sorted by average rating. This ensured that highly-rated but rarely-rated movies did not skew the results.
+
+### Q3: Favourite Genre of Active Users (≥ 50 ratings)
+Users who rated at least 50 movies were extracted, then joined with genre information from titles_df. Genres were unpivoted using stack() and the most frequently rated genre per user was calculated. This helped identify viewing preferences of the most engaged users.
+
+### Q4: Users Below Age 20
+A simple Spark SQL filter on users_df using WHERE age < 20 displayed all users who were teenagers or children. This could be used to analyze the demographic distribution of young users in the dataset.
+
+### Q5: Scientists Aged Between 30 and 40
+Another filtered query on users_df identified all users whose occupation was scientist and whose age was between 30 and 40. This showed a specific subgroup of professionals for targeted analysis.
 
 ---
 
-## References
+## ✅ Conclusion
 
-- [MovieLens Dataset](https://grouplens.org/datasets/movielens/)
-- [Apache Spark Docs](https://spark.apache.org/docs/latest/)
-- [Cassandra Docs](https://cassandra.apache.org/doc/latest/)
+This project demonstrates a practical data pipeline built on Big Data tools — ingesting, storing, and analyzing structured data using Spark and Cassandra. Zeppelin provides a clean interactive environment to run queries, visualize results, and track progress.
+
+The approach is scalable and adaptable to larger datasets, making it a solid foundation for real-world analytics, recommendation systems, or demographic-based insights in the media domain.
 
 ---
 
-## Author
+## How to Reproduce?
 
-- Hashwineey Tamilselvan | MSc Data Science
+1. Start HDP Sandbox (with Spark + Cassandra services running)
+2. Open Zeppelin at `http://sandbox-hdp.hortonworks.com:9995` (or your Zeppelin Notebook port)
+3. Paste the notebook blocks into `%sh` and `%pyspark` cells
+4. Create Cassandra keyspace & tables using `cqlsh` in PuTTY or terminal
+5. Run all queries & export results as needed
+
+---
+
 
 
 
