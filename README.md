@@ -1,6 +1,6 @@
 ![movielens](https://github.com/user-attachments/assets/11cd3350-d6a0-437c-982a-ddf5e765b227)
 
-# MovieLens Analytics with Spark Cassandra in Zeppelin Notebook
+# MovieLens Analytics with Spark & Cassandra in Zeppelin Notebook
 
 This project explores the MovieLens 100k dataset using Apache Spark and Cassandra in Zeppelin Notebook. The objective was to process real-world structured data, store it in a distributed NoSQL database, and perform analytical queries using Spark SQL, all within a Big Data ecosystem.
 
