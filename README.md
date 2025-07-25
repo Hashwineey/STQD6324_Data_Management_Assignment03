@@ -48,9 +48,13 @@ Another filtered query on users_df identified all users whose occupation was sci
 
 ## ✅ Conclusion
 
-This project demonstrates a practical data pipeline built on Big Data tools — ingesting, storing, and analyzing structured data using Spark and Cassandra. Zeppelin provides a clean interactive environment to run queries, visualize results, and track progress.
+This project demonstrates an end-to-end pipeline using Apache Spark and Cassandra in Zeppelin Notebook to analyze the MovieLens 100k dataset. All three key files (u.user, u.item, and u.data) were:
 
-The approach is scalable and adaptable to larger datasets, making it a solid foundation for real-world analytics, recommendation systems, or demographic-based insights in the media domain.
++ Uploaded into HDFS
++ Parsed using Spark
++ Saved into Cassandra tables
+
+Spark SQL was then used for analytical queries, leveraging in-memory computation. The combination of distributed processing and NoSQL storage enabled efficient handling of real-world scale datasets. This notebook shows how to build scalable and insightful data analytics pipelines for structured datasets.
 
 ---
 
